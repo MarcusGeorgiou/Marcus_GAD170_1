@@ -17,20 +17,7 @@ public class BriefWork : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-    }
-
-    public void InitialStats()
-    {
-        // Set up stats, level and xp
-        level = 1;
-        charXP = 0f;
-        reqXP = 100f;
-
-        charHP = 5f;
-        charDEF = 1f;
-        charSPD = 10f;
-        charATK = 3f;
+        InitialStats();
     }
 
     // Update is called once per frame
@@ -53,6 +40,23 @@ public class BriefWork : MonoBehaviour
             Interaction(70f);
             Debug.Log("You helped a civilian with a mundane task, gained 70xp");
         }
+        if (charXP >= reqXP)
+        {
+            LevelUp();
+        }
+    }
+
+    public void InitialStats()
+    {
+        // Set up stats, level and xp
+        level = 1;
+        charXP = 0f;
+        reqXP = 100f;
+
+        charHP = 5f;
+        charDEF = 1f;
+        charSPD = 10f;
+        charATK = 3f;
     }
 
     public void Interaction(float earnedXP)
@@ -70,8 +74,6 @@ public class BriefWork : MonoBehaviour
     public void LevelUp()
     {
         // Increase level
-        if (charXP >= reqXP)
-        {
             reqXP *= 1.2f;
             charXP = 0f;
             level++;
@@ -79,7 +81,6 @@ public class BriefWork : MonoBehaviour
             Debug.Log("CONGRATS, you have reached level: " + level);
             Debug.Log("EXP to next level: " + reqXP);
             IncreaseStats();
-        }
     }
 
     public void IncreaseStats()
