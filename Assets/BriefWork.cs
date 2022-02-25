@@ -23,6 +23,8 @@ public class BriefWork : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check which button is being pressed
+        // Apply relevant player xp
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Interaction(25f);
@@ -40,6 +42,8 @@ public class BriefWork : MonoBehaviour
             Interaction(70f);
             Debug.Log("You helped a civilian with a mundane task, gained 70xp");
         }
+
+        // Check if the player needs a level up
         if (charXP >= reqXP)
         {
             LevelUp();
@@ -91,6 +95,7 @@ public class BriefWork : MonoBehaviour
         charSPD += 2f;
         charATK += 7f;
 
+        // Display new player stats
         Debug.Log("Health: " + charHP);
         Debug.Log("Attack: " + charATK);
         Debug.Log("Defense: " + charDEF);
